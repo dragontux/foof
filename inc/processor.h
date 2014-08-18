@@ -22,19 +22,26 @@ typedef union gen_reg {
 	uint8_t  h[2];
 } gen_reg_t;
 
+// TODO: reorder these to appropriate reg. numbers
+typedef enum regnum {
+	REG_A,
+	REG_B,
+	REG_C,
+	REG_D,
+	REG_BP,
+	REG_SP,
+	REG_SI,
+	REG_DI,
+} regnum_t;
+
 typedef struct registers {
-	union {
-		gen_reg_t num[16];
-		// TODO: reorder these to appropriate reg. numbers
-		gen_reg_t a, b, c, d, bp, sp, si, di;
-	};
+	gen_reg_t num[16];
 
 	gen_reg_t cs, ss, ds;
 	gen_reg_t ip;
 	gen_reg_t crt[4];
 
 	uint32_t eflags;
-
 } registers_t;
 
 typedef struct processor {
